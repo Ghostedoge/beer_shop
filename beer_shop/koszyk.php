@@ -51,7 +51,6 @@ if (isset($_SESSION['user_id'])) {
 
 <nav>
     <div class="nav-container">
-        <!-- LOGO Z PODSKAKUJĄCYMI LITERKAMI -->
         <a href="index.php" class="logo-wrapper">
             <img src="assets/BeerShop.png" alt="BeerShop" class="logo-img">
             <span class="logo-text">
@@ -62,24 +61,20 @@ if (isset($_SESSION['user_id'])) {
         </a>
 
         <div class="nav-links">
-            <!-- Strona główna -->
             <a href="index.php" class="nav-link <?php echo (basename($_SERVER['PHP_SELF']) == 'index.php') ? 'active' : ''; ?>">
                 <i class="fas fa-home"></i>Strona główna
             </a>
 
-            <!-- Konto -->
             <a href="konto.php" class="nav-link <?php echo (basename($_SERVER['PHP_SELF']) == 'konto.php') ? 'active' : ''; ?>">
                 <i class="fas fa-user"></i>Konto
             </a>
 
-            <!-- Panel Admina -->
             <?php if ($is_admin): ?>
                 <a href="admin/" class="nav-link admin-panel-btn <?php echo (strpos($_SERVER['REQUEST_URI'], '/admin/') === 0) ? 'active' : ''; ?>">
                     <i class="fas fa-crown"></i>Panel Admina
                 </a>
             <?php endif; ?>
 
-            <!-- Koszyk -->
             <a href="koszyk.php" class="nav-link cart-link <?php echo (basename($_SERVER['PHP_SELF']) == 'koszyk.php') ? 'active' : ''; ?>">
                 <i class="fas fa-beer-mug-empty"></i>Koszyk
                 <span class="cart-count" id="cart-count"></span>
@@ -124,7 +119,6 @@ function showAlert(msg, success = true) {
     const icon = alertEl.querySelector(".alert-icon");
     const text = alertEl.querySelector(".alert-text");
 
-    // Reset dla bezpieczeństwa
     alertEl.classList.remove("show");
     alertEl.onclick = null;
     document.removeEventListener("click", closeAlert);
@@ -133,7 +127,6 @@ function showAlert(msg, success = true) {
     icon.style.color = success ? "#ffc800" : "#ff4444";
     text.textContent = msg;
 
-    // Pokazanie alertu
     setTimeout(() => alertEl.classList.add("show"), 10);
 
     function closeAlert() {
@@ -142,13 +135,10 @@ function showAlert(msg, success = true) {
         document.removeEventListener("click", closeAlert);
     }
 
-    // kliknięcie w overlay zamyka
     alertEl.onclick = closeAlert;
 
-    // kliknięcie gdziekolwiek zamyka
     setTimeout(() => document.addEventListener("click", closeAlert), 100);
 
-    // auto-zamknięcie
     setTimeout(closeAlert, 1300);
 }
 

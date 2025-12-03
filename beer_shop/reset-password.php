@@ -113,7 +113,6 @@ if (isset($_SESSION['user_id'])) {
 <body>
 <nav>
     <div class="nav-container">
-        <!-- LOGO Z PODSKAKUJĄCYMI LITERKAMI -->
         <a href="index.php" class="logo-wrapper">
             <img src="assets/BeerShop.png" alt="BeerShop" class="logo-img">
             <span class="logo-text">
@@ -124,24 +123,20 @@ if (isset($_SESSION['user_id'])) {
         </a>
 
         <div class="nav-links">
-            <!-- Strona główna -->
             <a href="index.php" class="nav-link <?php echo (basename($_SERVER['PHP_SELF']) == 'index.php') ? 'active' : ''; ?>">
                 <i class="fas fa-home"></i>Strona główna
             </a>
 
-            <!-- Konto -->
             <a href="konto.php" class="nav-link <?php echo (basename($_SERVER['PHP_SELF']) == 'konto.php') ? 'active' : ''; ?>">
                 <i class="fas fa-user"></i>Konto
             </a>
 
-            <!-- Panel Admina -->
             <?php if ($is_admin): ?>
                 <a href="admin/" class="nav-link admin-panel-btn <?php echo (strpos($_SERVER['REQUEST_URI'], '/admin/') === 0) ? 'active' : ''; ?>">
                     <i class="fas fa-crown"></i>Panel Admina
                 </a>
             <?php endif; ?>
 
-            <!-- Koszyk -->
             <a href="koszyk.php" class="nav-link cart-link <?php echo (basename($_SERVER['PHP_SELF']) == 'koszyk.php') ? 'active' : ''; ?>">
                 <i class="fas fa-beer-mug-empty"></i>Koszyk
                 <span class="cart-count" id="cart-count"></span>

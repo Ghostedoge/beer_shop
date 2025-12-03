@@ -136,6 +136,7 @@ if (!empty($_GET['del_item'])) {
         .status.paid{background:#ffd700;color:#000}
         .status.sent{background:#3498db;color:#fff}
         .status.completed{background:var(--s);color:#fff}
+        .status.canceled{background:#880808;color:#fff}
         .msg{padding:16px;background:rgba(255,200,0,0.15);border-left:6px solid var(--p);border-radius:10px;margin:15px 0;font-weight:600}
         .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:9999;align-items:center;justify-content:center;padding:20px;overflow-y:auto}
         .modal.active{display:flex}
@@ -222,7 +223,7 @@ if (!empty($_GET['del_item'])) {
                     <td><?=htmlspecialchars($o['phone']??'-')?></td>
                     <td style="max-width:190px;font-size:0.9rem"><?=nl2br(htmlspecialchars($o['address']))?></td>
                     <td style="color:var(--p);font-weight:900;font-size:1.1rem"><?=number_format($o['total'],2)?> zł</td>
-                    <td><span class="status <?=$o['status']?>"><?=['new'=>'Nowe','paid'=>'Opłacone','sent'=>'Wysłane','completed'=>'Zrealizowane'][$o['status']]??$o['status']?></span></td>
+                    <td><span class="status <?=$o['status']?>"><?=['new'=>'Nowe','paid'=>'Opłacone','sent'=>'Wysłane','completed'=>'Zrealizowane', 'canceled'=>'Anulowane'][$o['status']]??$o['status']?></span></td>
                     <td>
                         <button class="btn btn-s btn-sm" onclick='editOrder(<?=json_encode($o,JSON_HEX_APOS|JSON_HEX_QUOT)?>)'>Zmień status</button>
                         <a href="?s=items&order_id=<?=$o['id']?>" class="btn btn-p btn-sm">Szczegóły</a>
@@ -340,6 +341,7 @@ if (!empty($_GET['del_item'])) {
                 <option value="paid">Opłacone</option>
                 <option value="sent">Wysłane</option>
                 <option value="completed">Zrealizowane</option>
+                <option value="canceled">Anulowane</option>
             </select>
         </div>
         <button type="submit" class="btn btn-s" style="width:100%;padding:15px;font-size:1.1rem">Zapisz</button>

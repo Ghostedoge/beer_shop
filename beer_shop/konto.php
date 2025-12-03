@@ -186,8 +186,11 @@ if (isset($_SESSION['user_id'])) {
         .order-status{display:inline-block;padding:6px 16px;border-radius:12px;font-weight:bold;font-size:.9rem}
         .status-new{background:#3498db;color:#fff}
         .status-processing{background:#f39c12;color:#fff}
+        .status-paid{background:#ffd700;color:#000}
+        .status-sent{background:#3498db;color:#fff}
+        .status-completed{background:#00d26a;color:#fff}
         .status-shipped{background:#27ae60;color:#fff}
-        .status-cancelled{background:#e74c3c;color:#fff}
+        .status-canceled{background:#880808;color:#fff}
     </style>
 </head>
 <body>
@@ -288,7 +291,7 @@ if (isset($_SESSION['user_id'])) {
                                     </div>
                                     <div style="text-align:right;">
                                         <span class="order-status status-<?= $order['status'] ?>">
-                                            <?= ['new'=>'Nowe','processing'=>'W realizacji','shipped'=>'Wysłane','cancelled'=>'Anulowane'][$order['status']] ?? $order['status'] ?>
+                                            <?= ['new'=>'Nowe','processing'=>'W realizacji','shipped'=>'Wysłane','canceled'=>'Anulowane'][$order['status']] ?? $order['status'] ?>
                                         </span>
                                         <div style="margin-top:8px;font-size:1.4rem;color:var(--primary);font-weight:bold;">
                                             <?= number_format($order['total'], 2) ?> zł
